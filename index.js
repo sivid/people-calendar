@@ -1,8 +1,16 @@
-// nodemon index.js
-// http-prompt localhost:8888
-// http-prompt https://afternoon-atoll-47323.herokuapp.com/
-// cd /api; post bodydata=dat
-// https://www.npmjs.com/package/body-parser
+/* commands to remember:
+// local testing
+heroku local web
+
+// to deploy to heroku
+git push heroku master
+
+// REST API testing
+http-prompt localhost:8888
+http-prompt https://afternoon-atoll-47323.herokuapp.com/
+// change to URI; post with json body 
+cd /api; post aaa=bbb
+*/
 var express = require("express");
 var app = express();
 var fs = require('fs');
