@@ -1,5 +1,6 @@
 // nodemon index.js
 // http-prompt localhost:8888
+// http-prompt https://afternoon-atoll-47323.herokuapp.com/
 // cd /api; post bodydata=dat
 // https://www.npmjs.com/package/body-parser
 var express = require("express");
