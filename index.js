@@ -9,7 +9,7 @@ var bodyParser = require("body-parser");
 var nJwt = require('njwt');
 var responseTime = require('response-time')
 
-var port = process.env.port || 8888;
+var port = process.env.port || 5000;
 var api_router = express.Router();
 var signingKey = 'Bi8KhyCM3yJhX74S35vWhdVUZGWUSKvqVbyQWcGr';
 
