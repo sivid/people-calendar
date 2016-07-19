@@ -9,9 +9,9 @@ var bodyParser = require("body-parser");
 var nJwt = require('njwt');
 var responseTime = require('response-time')
 
-var port = process.env.PORT || 5000;
 var api_router = express.Router();
 var signingKey = 'Bi8KhyCM3yJhX74S35vWhdVUZGWUSKvqVbyQWcGr';
+app.set('port', (process.env.PORT || 5000));
 
 // middleware needs to be registered before routers
 api_router.use(function(req, res, next) { // do logging
@@ -41,6 +41,6 @@ app.use(express.static(__dirname + '/public'));
 
 
 // start
-app.listen(port, function() {
-  console.log("API server running on port", port);
+app.listen(app.get('port'), function() {
+  console.log("API server running on port", app.get('port'));
 });
