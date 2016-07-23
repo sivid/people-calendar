@@ -21,7 +21,8 @@ Put html/css/js files in /public folder
 `heroku local web`
 
 ##### to deploy to heroku
-`git push heroku master`
+`git push heroku master`  pushing to github works too..
+
 
 ##### REST API testing
 `http-prompt localhost:5000`

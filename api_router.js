@@ -34,25 +34,36 @@ router.post("/posthere", function (req, res) {
 });
 
 function redistest(key, value, response) {
+  // remember the whole point of Promise is to allow async programming do `return` and `throw`, and to have a call stack
+  // https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html
+  console.log("redistest - START, incoming key and value:", key, value);
   redisClient.setAsync(key, value).then(function (result) {
-    console.log("what result?", result); // it should say "OK"
-    // throw "oh no!";
+    console.log("this should say OK", result);
   }).then(function (result) {
-    redisClient.getAsync(key).then(function (val) {
+    console.log("this should be undefined:", result);
+    return redisClient.getAsync(key).then(function (val) { // note why we put this function call here
       console.log("retrieved value was", val);
+      if (val !== value) throw "not equal!";
       var reply = {};
       reply.val = val;
-      response.json(JSON.stringify(reply));
+      // know
+      // 1. why we need to return here
+      // 2. what are we returning here
+      // 3. what will our next handler receive
+      // 4. where are we going next
+      return reply; 
     });
+  }).then(function (reply) {
+    response.json(JSON.stringify(reply));
   }).catch(function (err) {
     console.error("redistest oops", err);
   });
 }
 
-router.get("/redistest_query", function(request, response) {
+router.get("/redistest_query", function (request, response) {
   redistest(request.query.key, request.query.value, response);
 });
-router.post("/redistest_params/:key/:value", function(request, response) {
+router.post("/redistest_params/:key/:value", function (request, response) {
   redistest(request.params.key, request.params.value, response);
 });
 
