@@ -4,7 +4,7 @@ var router = module.exports = express.Router();
 var responseTime = require("response-time");
 var Promise = require("bluebird");
 var redis = Promise.promisifyAll(require("redis"));
-var redisClient = redis.createClient(process.env.REDIS_URL);
+var redisClient = redis.createClient(process.env.REDIS_URL); // will connect to local redis if not set
 
 router.use(responseTime()); // adds X-Response-Time to response header
 
@@ -33,16 +33,16 @@ router.post("/posthere", function (req, res) {
   res.json(JSON.stringify(reply));
 });
 
-router.post("/redistest", function (req, res) {
-  redisClient.setAsync("keyhere", "valhere", redis.print).then(function (result) {
+router.post("/redistest", function (req, response) {
+  console.log("redistest rcvd:", req);
+  redisClient.setAsync("keyhere", "valhere").then(function (result) {
     console.log("what result?", result);
     redisClient.getAsync("keyhere").then(function (res) {
       console.log(res);
       // redisClient.quit();
       var reply = {};
       reply.val = res;
-      res.json(JSON.stringify(reply));
+      response.json(JSON.stringify(reply));
     });
   });
-
 });
