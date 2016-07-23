@@ -16,16 +16,16 @@ then install Redis as a service with
 Put html/css/js files in /public folder
 
 ---
-## commands to remember:
-# local testing
+#### commands to remember:
+##### local testing
 `heroku local web`
 
-# to deploy to heroku
+##### to deploy to heroku
 `git push heroku master`
 
-# REST API testing
+##### REST API testing
 `http-prompt localhost:5000`
-# change to URI; post with json body 
+##### change to URI; post with json body 
 ```
 cd /api
 post aaa=bbb
