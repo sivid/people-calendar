@@ -33,16 +33,29 @@ router.post("/posthere", function (req, res) {
   res.json(JSON.stringify(reply));
 });
 
-router.post("/redistest", function (req, response) {
-  console.log("redistest rcvd:", req);
-  redisClient.setAsync("keyhere", "valhere").then(function (result) {
-    console.log("what result?", result);
-    redisClient.getAsync("keyhere").then(function (res) {
-      console.log(res);
-      // redisClient.quit();
+function redistest(key, value, response) {
+  redisClient.setAsync(key, value).then(function (result) {
+    console.log("what result?", result); // it should say "OK"
+    // throw "oh no!";
+  }).then(function (result) {
+    redisClient.getAsync(key).then(function (val) {
+      console.log("retrieved value was", val);
       var reply = {};
-      reply.val = res;
+      reply.val = val;
       response.json(JSON.stringify(reply));
     });
+  }).catch(function (err) {
+    console.error("redistest oops", err);
   });
+}
+
+router.get("/redistest_query", function(request, response) {
+  redistest(request.query.key, request.query.value, response);
 });
+router.post("/redistest_params/:key/:value", function(request, response) {
+  redistest(request.params.key, request.params.value, response);
+});
+
+
+
+
