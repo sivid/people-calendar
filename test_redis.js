@@ -1,12 +1,16 @@
+"use strict";
 /* with bluebird */
 var Promise = require("bluebird");
 var redis = Promise.promisifyAll(require("redis"));
 var client = redis.createClient();
+var data = require("./data");
 
 client.getAsync("string key").then(function(res) {
   console.log(res);
   client.quit();
 });
+
+console.log("data", data);
 
 /* native */
 // var redis = require("redis"), client = redis.createClient();

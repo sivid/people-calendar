@@ -1,3 +1,4 @@
+"use strict";
 /* commands to remember:
 // local testing
 heroku local web
