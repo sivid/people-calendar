@@ -16,12 +16,20 @@ var express = require("express");
 var app = express();
 var fs = require("fs");
 var nJwt = require("njwt");
-var apiRouter = require("./api_router");
+let options = {};
 var signingKey = "Bi8KhyCM3yJhX74S35vWhdVUZGWUSKvqVbyQWcGr";
 
 app.set("port", (process.env.PORT || 5000));
-// middleware needs to be registered before routers
-app.use("/api", apiRouter); // apiRouter will be mounted under the URI /api
+if (process.argv.length >= 3 && process.argv.indexOf("loadApiRouter") > -1) {
+  console.log("loading API router");
+  var apiRouter = require("./api_router")(options);
+  app.use("/api", apiRouter); // apiRouter will be mounted under the URI /api
+} else {
+  console.log("serving only static files");
+  // do nothing
+}
+
+
 app.use(express.static(__dirname + "/public")); // static assets
 app.listen(app.get("port"), function() { // start
   console.log("API server running on port", app.get("port"));

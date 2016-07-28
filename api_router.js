@@ -1,11 +1,14 @@
 "use strict";
 var express = require("express");
 var bodyParser = require("body-parser");
-var router = module.exports = express.Router();
+var router = express.Router();
 var responseTime = require("response-time");
 var Promise = require("bluebird");
 var redis = Promise.promisifyAll(require("redis"));
-var redisClient = redis.createClient(process.env.REDIS_URL); // will connect to local redis if not set
+
+var redisClient = redis.createClient(process.env.REDIS_URL); // will connect to local redis if REDIS_URL is not set
+
+// middleware needs to be registered before routers
 
 router.use(responseTime()); // adds X-Response-Time to response header
 
@@ -69,5 +72,8 @@ router.post("/redistest_params/:key/:value", function (request, response) {
 });
 
 
-
+module.exports = function(options) {
+  var useRedis = options.useRedis;
+  return router;
+};
 
