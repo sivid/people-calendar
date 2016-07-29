@@ -12,9 +12,10 @@ Each Day consists of three Blocks.
 A Block can have property, block.timestamp.  
 The timestamp of a Block can be either
 
-1. the same timestamp as the start (00:00) of that Day.  (morning)
-2. the same timestamp as 12:00 of that Day.  (afternoon)
-3. the same timestamp as 18:00 of that Day.  (night)
+1. the same timestamp as the start (00:00) of that Day.  (represents morning)
+2. the same timestamp as 08:00 of that Day.  (represents afternoon)
+3. the same timestamp as 16:00 of that Day.  (represents night)
+timestamps are seperated by 8 hours, so that going across Days will be easier.
 
 For each user, we have the following options:  
 http://stackoverflow.com/questions/210729/data-structure-for-non-overlapping-ranges-within-a-single-dimension  
@@ -29,6 +30,8 @@ startBlock and endBlock are both inclusive.
 Can almost see the mountain of edge cases /cry
 
 ###APIs
+clients should send us their timezone `moment.tz.guess()`
+
 
 ###webpage, UI/UX
 Discussed with Jinny, will see what comes up.
