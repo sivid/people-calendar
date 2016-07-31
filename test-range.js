@@ -1,0 +1,14 @@
+var Range = require("./range");
+console.log(Range);
+var r1 = new Range(1472428800000, 1472486400000, "Asia/Taipei");
+r1.print();
+var r2 = new Range(1472428900000, 1472429000000, "Asia/Taipei");
+r2.print();
+var r3 = new Range(1472428600000, 1472428900000, "Asia/Taipei");
+r3.print();
+console.log("r1 r2", r1.isOverlap(r2));
+console.log("r2 r1", r1.isOverlap(r2));
+console.log("r1 r3", r1.isOverlap(r3));
+console.log("r3 r1", r1.isOverlap(r3));
+console.log("r2 r3", r2.isOverlap(r3));
+console.log("r3 r2", r3.isOverlap(r2));
