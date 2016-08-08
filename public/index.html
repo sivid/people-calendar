@@ -22,27 +22,43 @@
 </head>
 
 <body>
-	<header class="">Arrange People</header>
-	<article class="css_listbox" id="activitybox">
-		<ul class="css_list activityList">
-			<li class="css_listrow activityName">Temp Activity(活動名稱)</li>
-			<li class="css_listrow activitynum">11(人數)</li>
-			<li class="css_listrow activityend"></li>
-			<li class="css_listrow activitydateend"> ~2016.08.05 還有3天</li>
-			<li class="css_listrow activitystatus">Opening(進行中)</li>
-		</ul>
-		<ul class="css_list activityList">
-			<li class="css_listrow activityName">Temp Activity2(活動名稱)</li>
-			<li class="css_listrow activitynum">8(人數)</li>
-			<li class="css_listrow activityend">2016.10.10</li>
-			<li class="css_listrow activitydateend"></li>
-			<li class="css_listrow activitystatus">Done(結束)</li>
-		</ul>
-		<button class="btn-primary" id="createActivity"></button>
-	</article>
-	<footer class="">2016 Arrange People. All rights reserved</footer>
-	<!--JS-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <header class="topbar vertical-middle">
+        <input type="checkbox" id="menu_leftbar">
+        <label for="menu_leftbar" class="NBicon-menu vertical-middle" id="label_leftbar">Arrange People</label>
+        <ul class="menu_list" id="menu_left">
+            <li class="menu_li vertical-middle open" id="activity">Activity</li>
+            <li class="menu_li vertical-middle" id="calender">Calender</li>
+            <li class="menu_li vertical-middle" id="set">Setting</li>
+            <li class="menu_li vertical-middle" id="name">Profile</li>
+            <li class="menu_li vertical-middle" id="logout">Log Out</li>
+        </ul>
+        <ul class="menu_list" id="menu_user">
+            <img src="images/userphoto.jpg">
+        </ul>
+    </header>
+    <article class="page_content css_listbox" id="activitybox" style="display: block">
+        <ul class="css_list activityList">
+            <li class="css_listrow activityName">Temp Activity(活動名稱)</li>
+            <li class="css_listrow activitynum">11(人數)</li>
+            <li class="css_listrow activityend"></li>
+            <li class="css_listrow activitydateend"> ~2016.08.05 還有3天</li>
+            <li class="css_listrow activitystatus">Opening(進行中)</li>
+        </ul>
+        <ul class="css_list activityList">
+            <li class="css_listrow activityName">Temp Activity2(活動名稱)</li>
+            <li class="css_listrow activitynum">8(人數)</li>
+            <li class="css_listrow activityend">2016.10.10</li>
+            <li class="css_listrow activitydateend"></li>
+            <li class="css_listrow activitystatus">Done(結束)</li>
+        </ul>
+        <button class="btn-primary" id="createActivity"></button>
+    </article>
+    <article class="page_content" id="calenderbox"></article>
+    <article class="page_content" id="setbox"></article>
+    <article class="page_content" id="namebox"></article>
+    <footer class="footer_right">2016 Arrange People. All rights reserved</footer>
+    <!--JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>
     window.jQuery || document.write('<script src="javascripts/jquery-2.1.3.min.js"><\/script>')
     </script>

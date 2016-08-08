@@ -1,0 +1,131 @@
+.topbar
+	width: 100%
+	height: 70px
+	padding: 0 1%
+	background: white
+	font-family: "Montserrat", "微軟正黑體", sans-serif
+	@include box-shadow(10px 10px 42px rgba(232, 235, 244, 0.7))
+	#menu_leftbar
+		display: none
+	#label_leftbar
+		width: 20%
+		text-align: center
+		cursor: pointer
+		height: 100%
+		display: inline-block
+		font-size: 1.5rem
+		color: $MainColor
+		@include transition(all 0.5s ease-out)
+		&:hover
+			color: $ActionColor
+	.menu_list
+		@include display-flex(inline-flex)
+		letter-spacing: 1px
+		height: 100%
+		vertical-align: top
+		&#menu_left
+			width: 50%
+			color: #A0A4A9
+		&#menu_user
+			width: 30%
+			padding-right: 2%
+			@include align-items(center)
+			@include justify-content(flex-end)
+			img
+				width: 50px
+				height: 50px
+				border-radius: 100%
+				cursor: pointer
+				@include transition(all 0.3s ease-out)
+				@include box-shadow(0 0 0)
+				&:hover
+					@include box-shadow(0 0 15px rgba(87, 207, 182, .7))	
+		.menu_li
+			width: 20%
+			text-align: center
+			border-right: #EFEFEF solid thin
+			@include transition(all 0.3s ease-out)
+			cursor: pointer
+			&:first-of-type
+				border-left: #EFEFEF solid thin
+			&.open
+				background: $ActionColor
+				color: white
+				position: relative
+				cursor: default
+				&:before
+					content: ""
+					position: absolute
+					width: 0
+					height: 0
+			&:not(.open):hover
+				color: #555D65
+				@include box-shadow(10px 10px 42px rgba(236, 240, 247, 0.8), -10px -10px 42px rgba(236, 240, 247, 0.8))	
+.page_content
+	width: 100%
+	height: calc(100% - 90px)
+	display: none
+.footer_right
+	width: 100%
+	height: 20px
+	text-align: right
+	padding-right: 10px
+
+
+// PC / Notebook
+@media only screen and (min-width: 1024px)
+	.topbar
+		white-space: nowrap
+		#label_leftbar
+			&:before
+				content: ""
+		.menu_list
+			&#menu_left
+				@include justify-content(space-between)
+			.menu_li
+				&:before
+					bottom: -17px
+					left: calc(50% - 14px)
+					border-right: 14px solid transparent
+					border-left: 14px solid transparent
+					border-top: 17px solid $ActionColor
+// Tablet / Phobe
+@media only screen and (max-width: 1024px)
+	.topbar
+		height: 50px
+		#label_leftbar
+			width: 68%
+			text-align: left
+			font-size: 1.3rem
+			&:before
+				font-size: 2rem
+				margin-right: 5px
+				vertical-align: middle
+		.menu_list
+			&#menu_left
+				@include flex-direction(column)
+				position: absolute
+				top: 50px
+				left: 0
+				background: white
+				height: calc(100% - 50px)
+				font-size: 1.3rem
+				color: #9FA3A8
+				.menu_li
+					width: 100%
+					line-height: 3
+					&:before
+						font-size: 1.7rem
+						vertical-align: middle
+						margin-right: 8px
+			&#menu_user
+				img
+					width: 40px
+					height: 40px
+			.menu_li
+				&:before
+					right: -25px
+					top: calc(50% - 14px)
+					border-top: 14px solid transparent
+					border-bottom: 14px solid transparent
+					border-left: 17px solid $ActionColor
