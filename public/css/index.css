@@ -250,6 +250,9 @@ button {
 .form-control.noborder {
   border-bottom-width: 0;
 }
+.form-control.nobg {
+  background-color: transparent;
+}
 .form-control:focus, .form-control.error:focus {
   border-color: #269dec;
   outline: 0;
@@ -4034,7 +4037,6 @@ div.css_select .css_select-scrollbar::-webkit-scrollbar-thumb {
 
 .topbar {
   width: 100%;
-  height: 70px;
   padding: 0 1%;
   background: white;
   font-family: "Montserrat", "微軟正黑體", sans-serif;
@@ -4046,12 +4048,9 @@ div.css_select .css_select-scrollbar::-webkit-scrollbar-thumb {
   display: none;
 }
 .topbar #label_leftbar {
-  width: 20%;
-  text-align: center;
   cursor: pointer;
   height: 100%;
   display: inline-block;
-  font-size: 1.5rem;
   color: #47BCE6;
   -moz-transition: all 0.5s ease-out;
   -o-transition: all 0.5s ease-out;
@@ -4067,10 +4066,6 @@ div.css_select .css_select-scrollbar::-webkit-scrollbar-thumb {
   letter-spacing: 1px;
   height: 100%;
   vertical-align: top;
-}
-.topbar .menu_list#menu_left {
-  width: 50%;
-  color: #A0A4A9;
 }
 .topbar .menu_list#menu_user {
   width: 30%;
@@ -4099,7 +4094,6 @@ div.css_select .css_select-scrollbar::-webkit-scrollbar-thumb {
   box-shadow: 0 0 15px rgba(87, 207, 182, 0.7);
 }
 .topbar .menu_list .menu_li {
-  width: 20%;
   text-align: center;
   border-right: #EFEFEF solid thin;
   -moz-transition: all 0.3s ease-out;
@@ -4132,8 +4126,27 @@ div.css_select .css_select-scrollbar::-webkit-scrollbar-thumb {
 
 .page_content {
   width: 100%;
-  height: calc(100% - 90px);
   display: none;
+}
+
+#activitybox > * {
+  width: 100%;
+}
+#activitybox #activityFilter {
+  height: 50px;
+  padding: 0 2%;
+}
+#activitybox #activityFilter .form-control {
+  display: inline-block;
+  width: initial;
+}
+#activitybox #activityBox {
+  height: calc(100% - 50px);
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 0 2%;
 }
 
 .footer_right {
@@ -4143,16 +4156,27 @@ div.css_select .css_select-scrollbar::-webkit-scrollbar-thumb {
   padding-right: 10px;
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1025px) {
   .topbar {
+    height: 70px;
     white-space: nowrap;
+  }
+  .topbar #label_leftbar {
+    width: 20%;
+    text-align: center;
+    font-size: 1.5rem;
   }
   .topbar #label_leftbar:before {
     content: "";
   }
   .topbar .menu_list#menu_left {
+    width: 50%;
+    color: #A0A4A9;
     -webkit-justify-content: space-between;
     justify-content: space-between;
+  }
+  .topbar .menu_list .menu_li {
+    width: 20%;
   }
   .topbar .menu_list .menu_li:before {
     bottom: -17px;
@@ -4160,6 +4184,59 @@ div.css_select .css_select-scrollbar::-webkit-scrollbar-thumb {
     border-right: 14px solid transparent;
     border-left: 14px solid transparent;
     border-top: 17px solid #57CFB6;
+  }
+
+  .page_content {
+    height: calc(100% - 90px);
+  }
+
+  .activityList {
+    display: inline-block;
+    width: 250px;
+    height: 300px;
+    border-radius: 5px;
+    position: relative;
+    padding: 10px 0;
+    cursor: pointer;
+    background: #fff;
+    margin-right: 1.5%;
+    margin-bottom: 1.5%;
+    vertical-align: top;
+    border: #EFEFEF solid thin;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+  }
+  .activityList:hover {
+    -moz-box-shadow: 8px 8px 9px rgba(231, 231, 231, 0.7);
+    -webkit-box-shadow: 8px 8px 9px rgba(231, 231, 231, 0.7);
+    box-shadow: 8px 8px 9px rgba(231, 231, 231, 0.7);
+  }
+  .activityList .css_listrow {
+    text-align: center;
+  }
+  .activityList .activitydateline {
+    width: 120px;
+    margin: 3% auto;
+    height: 120px;
+    border-radius: 100%;
+    background: #57CFB6;
+  }
+  .activityList .activitydateline:before {
+    content: attr(data-day);
+    font-size: 4rem;
+    color: white;
+    vertical-align: middle;
+  }
+  .activityList .activitydateline[data-day="0"] {
+    display: none;
+  }
+  .activityList .activityName {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: #47BCE6;
+    font-family: "Noto sans", "微軟正黑體", sans-serif;
   }
 }
 @media only screen and (max-width: 1024px) {
@@ -4169,32 +4246,41 @@ div.css_select .css_select-scrollbar::-webkit-scrollbar-thumb {
   .topbar #label_leftbar {
     width: 68%;
     text-align: left;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   .topbar #label_leftbar:before {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-right: 5px;
     vertical-align: middle;
   }
+  .topbar #menu_leftbar:checked + #label_leftbar:before {
+    content: "";
+  }
+  .topbar #menu_leftbar:checked ~ #menu_left {
+    left: 0;
+  }
   .topbar .menu_list#menu_left {
+    width: 30%;
     -webkit-flex-direction: column;
     flex-direction: column;
     position: absolute;
     top: 50px;
-    left: 0;
+    left: -30%;
     background: white;
-    height: calc(100% - 50px);
+    height: calc(100% - 70px);
     font-size: 1.3rem;
     color: #9FA3A8;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
   }
   .topbar .menu_list#menu_left .menu_li {
     width: 100%;
     line-height: 3;
   }
   .topbar .menu_list#menu_left .menu_li:before {
-    font-size: 1.7rem;
-    vertical-align: middle;
-    margin-right: 8px;
+    display: none;
   }
   .topbar .menu_list#menu_user img {
     width: 40px;
@@ -4206,5 +4292,9 @@ div.css_select .css_select-scrollbar::-webkit-scrollbar-thumb {
     border-top: 14px solid transparent;
     border-bottom: 14px solid transparent;
     border-left: 17px solid #57CFB6;
+  }
+
+  .page_content {
+    height: calc(100% - 50px);
   }
 }

@@ -37,20 +37,30 @@
         </ul>
     </header>
     <article class="page_content css_listbox" id="activitybox" style="display: block">
-        <ul class="css_list activityList">
-            <li class="css_listrow activityName">Temp Activity(活動名稱)</li>
-            <li class="css_listrow activitynum">11(人數)</li>
-            <li class="css_listrow activityend"></li>
-            <li class="css_listrow activitydateend"> ~2016.08.05 還有3天</li>
-            <li class="css_listrow activitystatus">Opening(進行中)</li>
-        </ul>
-        <ul class="css_list activityList">
-            <li class="css_listrow activityName">Temp Activity2(活動名稱)</li>
-            <li class="css_listrow activitynum">8(人數)</li>
-            <li class="css_listrow activityend">2016.10.10</li>
-            <li class="css_listrow activitydateend"></li>
-            <li class="css_listrow activitystatus">Done(結束)</li>
-        </ul>
+        <section class="vertical-middle" id="activityFilter">
+            <select class="form-control noborder nobg">
+                <option value="" selected disabled>All Activity</option>
+                <option value="doing">進行中</option>
+                <option value="done">已結案</option>
+                <option value="over">已過期</option>
+            </select>
+        </section>
+        <section id="activityBox">
+            <ul class="activityList">
+                <li class="css_listrow activityresult"></li>
+                <li class="css_listrow vertical-middle activitydateline" data-day="3"></li>
+                <li class="css_listrow activityName">Activity Name</li>
+                <li class="css_listrow activitynum">11 members</li>
+                <li class="css_listrow activitydaterange">2016.08.05 ~ 2016.10.05</li> 
+            </ul>
+            <ul class="activityList">
+                <li class="css_listrow activityresult">2016.10.10</li>
+                <li class="css_listrow activitydateline" data-day="0"></li>
+                <li class="css_listrow activityName">Activity Name2</li>
+                <li class="css_listrow activitynum">8 members</li>
+                <li class="css_listrow activitydaterange">2016.08.05 ~ 2016.10.05</li>         
+            </ul>
+        </section>
         <button class="btn-primary" id="createActivity"></button>
     </article>
     <article class="page_content" id="calenderbox"></article>

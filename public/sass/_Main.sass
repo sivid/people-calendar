@@ -1,19 +1,15 @@
 .topbar
 	width: 100%
-	height: 70px
 	padding: 0 1%
 	background: white
-	font-family: "Montserrat", "微軟正黑體", sans-serif
+	font-family: $TitleFont
 	@include box-shadow(10px 10px 42px rgba(232, 235, 244, 0.7))
 	#menu_leftbar
 		display: none
 	#label_leftbar
-		width: 20%
-		text-align: center
 		cursor: pointer
 		height: 100%
 		display: inline-block
-		font-size: 1.5rem
 		color: $MainColor
 		@include transition(all 0.5s ease-out)
 		&:hover
@@ -23,9 +19,7 @@
 		letter-spacing: 1px
 		height: 100%
 		vertical-align: top
-		&#menu_left
-			width: 50%
-			color: #A0A4A9
+		&#menu_left		
 		&#menu_user
 			width: 30%
 			padding-right: 2%
@@ -41,7 +35,6 @@
 				&:hover
 					@include box-shadow(0 0 15px rgba(87, 207, 182, .7))	
 		.menu_li
-			width: 20%
 			text-align: center
 			border-right: #EFEFEF solid thin
 			@include transition(all 0.3s ease-out)
@@ -63,32 +56,90 @@
 				@include box-shadow(10px 10px 42px rgba(236, 240, 247, 0.8), -10px -10px 42px rgba(236, 240, 247, 0.8))	
 .page_content
 	width: 100%
-	height: calc(100% - 90px)
 	display: none
+#activitybox
+	&> *
+		width: 100%
+	#activityFilter
+		height: 50px
+		padding: 0 2%
+		.form-control
+			display: inline-block
+			width: initial
+	#activityBox
+		height: calc(100% - 50px)
+		@include display-flex(flex)
+		@include flex-wrap(wrap)
+		padding: 0 2%
 .footer_right
 	width: 100%
 	height: 20px
 	text-align: right
 	padding-right: 10px
 
-
 // PC / Notebook
-@media only screen and (min-width: 1024px)
+@media only screen and (min-width: 1025px)
 	.topbar
+		height: 70px
 		white-space: nowrap
 		#label_leftbar
+			width: 20%
+			text-align: center
+			font-size: 1.5rem
 			&:before
 				content: ""
 		.menu_list
 			&#menu_left
+				width: 50%
+				color: #A0A4A9
 				@include justify-content(space-between)
 			.menu_li
+				width: 20%
 				&:before
 					bottom: -17px
 					left: calc(50% - 14px)
 					border-right: 14px solid transparent
 					border-left: 14px solid transparent
 					border-top: 17px solid $ActionColor
+	.page_content
+		height: calc(100% - 90px)
+	.activityList
+		display: inline-block
+		width: 250px
+		height: 300px
+		border-radius: 5px
+		position: relative
+		padding: 10px 0
+		cursor: pointer
+		background: #fff
+		margin-right: 1.5%
+		margin-bottom: 1.5%
+		vertical-align: top
+		border: #EFEFEF solid thin
+		@include transition(all 0.5s ease-out)
+		&:hover
+			@include box-shadow(8px 8px 9px rgba(231, 231, 231, 0.7))
+		.css_listrow
+			text-align: center
+		.activitydateline
+			width: 120px
+			margin: 3% auto
+			height: 120px
+			border-radius: 100%
+			background: $ActionColor
+			&:before
+				content: attr(data-day)
+				font-size: 4rem
+				color: white
+				vertical-align: middle
+			&[data-day="0"]
+				display: none
+		.activityName
+			font-size: 1.6rem
+			line-height: 1.5
+			color: $MainColor
+			font-family: $MainFont
+			
 // Tablet / Phobe
 @media only screen and (max-width: 1024px)
 	.topbar
@@ -96,28 +147,33 @@
 		#label_leftbar
 			width: 68%
 			text-align: left
-			font-size: 1.3rem
+			font-size: 1.2rem
 			&:before
-				font-size: 2rem
+				font-size: 1.8rem
 				margin-right: 5px
 				vertical-align: middle
+		#menu_leftbar:checked
+			& + #label_leftbar:before
+				content: "\e5c4"
+			& ~ #menu_left
+				left: 0
 		.menu_list
 			&#menu_left
+				width: 30%
 				@include flex-direction(column)
 				position: absolute
 				top: 50px
-				left: 0
+				left: -30%
 				background: white
-				height: calc(100% - 50px)
+				height: calc(100% - 70px)
 				font-size: 1.3rem
 				color: #9FA3A8
+				@include transition(all 0.5s ease-out)
 				.menu_li
 					width: 100%
 					line-height: 3
 					&:before
-						font-size: 1.7rem
-						vertical-align: middle
-						margin-right: 8px
+						display: none
 			&#menu_user
 				img
 					width: 40px
@@ -129,3 +185,5 @@
 					border-top: 14px solid transparent
 					border-bottom: 14px solid transparent
 					border-left: 17px solid $ActionColor
+	.page_content
+		height: calc(100% - 50px)
