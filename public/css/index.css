@@ -4148,12 +4148,136 @@ div.css_select .css_select-scrollbar::-webkit-scrollbar-thumb {
   flex-wrap: wrap;
   padding: 0 2%;
 }
+#activitybox #createActivity {
+  position: fixed;
+  display: inline-block;
+  width: initial;
+  bottom: 10%;
+  right: 8%;
+  font-size: 5.5rem;
+  color: #4172D5;
+  cursor: pointer;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+#activitybox #createActivity:hover {
+  color: #2A5086;
+}
 
 .footer_right {
   width: 100%;
   height: 20px;
   text-align: right;
   padding-right: 10px;
+}
+
+#alert_bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 500;
+  visibility: hidden;
+  overflow-y: auto;
+}
+
+.alert_page {
+  position: fixed;
+  width: 700px;
+  left: calc(50% - 350px);
+  top: 10%;
+  visibility: hidden;
+  background-color: white;
+  border: thin #ccc solid;
+  margin-top: -5%;
+  z-index: 501;
+  opacity: 0;
+  font-size: 10.5pt;
+  border-radius: 4px;
+  -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.alert_page.alert_open {
+  visibility: visible;
+  opacity: 1;
+  margin-top: 0;
+}
+.alert_page.alert_open ~ #alert_bg {
+  visibility: visible;
+  opacity: 1;
+}
+.alert_page .alert_title {
+  width: 100%;
+  padding: 0 24px;
+  line-height: 2.5;
+  font-size: 1.3rem;
+  background: #F7F7F7;
+  color: #707070;
+  font-family: "Montserrat", "微軟正黑體", sans-serif;
+  border-bottom: #eee 1px solid;
+}
+.alert_page > i.NBicon-close {
+  position: absolute;
+  right: 22px;
+  top: 16px;
+  color: #BDBDBD;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.alert_page > i.NBicon-close:hover {
+  color: #57CFB6;
+}
+.alert_page .alert_button {
+  padding: 5px 10px;
+  border-top: #eee 1px solid;
+  text-align: right;
+  background: #fafafa;
+}
+.alert_page .alert_button .btn {
+  margin: 0 1.5%;
+}
+.alert_page .alert_content {
+  padding: 20px 25px;
+  overflow-y: auto;
+  max-height: 550px;
+  word-break: break-word;
+}
+.alert_page .alert_content.nano {
+  height: calc(80% - 100px);
+}
+.alert_page .alert_content.nano .nano-content {
+  padding: 20px 25px;
+}
+.alert_page .alert_content .subtitle {
+  text-indent: 4.5pt;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #4172D5;
+  font-family: "Montserrat", "微軟正黑體", sans-serif;
+}
+.alert_page .alert_content .form-control, .alert_page .alert_content .form-between {
+  width: 90%;
+}
+.alert_page .alert_content .form-between.icon-between {
+  width: 100%;
+}
+.alert_page .alert_content .subtitle:not(:first-of-type) {
+  margin-top: 2.5%;
+}
+.alert_page ::-webkit-scrollbar {
+  width: 15px;
+  border-left: #E0E0E0 solid thin;
+}
+.alert_page ::-webkit-scrollbar-thumb {
+  background-color: #999999;
 }
 
 @media only screen and (min-width: 1025px) {
