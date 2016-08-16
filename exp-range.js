@@ -1,4 +1,4 @@
-var Range = require("./range");
+var Range = require("./Range");
 console.log(Range);
 var r1 = new Range(1472428800000, 1472486400000, "Asia/Taipei");
 r1.print();

@@ -57,3 +57,4 @@ console.log(typeof date1.unix()); // "number"
 console.log(date1.unix() instanceof Number); // false
 console.log(typeof date1.unix() === "number"); // true
 console.log(typeof 131423423 === "number"); // true
+console.log(moment.tz.names());

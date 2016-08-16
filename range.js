@@ -4,22 +4,39 @@ function Range(startArg, endArg, tzString) {
   if (typeof tzString !== "string") {
     throw new Error("third argument must be a timezone string"); // like "Asia/Taipei"
   }
+  if (moment.tz.names().indexOf(tzString) === -1) {
+    throw new Error("third argument must be a timezone string"); // like "Asia/Taipei"
+  }
   if (typeof startArg === "number" && typeof endArg === "number") { // using unix timestamp
-    this.start = moment(startArg).tz(tzString);
-    this.end = moment(endArg).tz(tzString);
+    if (startArg === endArg) {
+      throw new Error("cannot have a instantaneous range"); // TODO rly?
+    }
+    let s = startArg > endArg ? endArg : startArg;
+    let e = startArg < endArg ? endArg : startArg;
+    this.start = moment(s).tz(tzString);
+    this.end = moment(e).tz(tzString);
     this.tzString = tzString;
   } else if (startArg instanceof moment && endArg instanceof moment) {
     if (startArg.format("ZZ") !== endArg.format("ZZ")) {
-      // I don't care if their z or zz or ._z.name matches or not
-      // throw new Error("input timezone offsets don't match @@");
+      // I don't care if their z or zz or ._z.name matches or not.
       // Actually, do nothing, I don't think this condition will cause an error,
       // the respective Moment objects will just live on.
       // Should note that our tzString is not representative of both Moment objects from now on.
       // tzString is only used when we are creating new start/end Moment objects from scratch.
       // Should not matter.  I think.
+
+      // ok, after thinking a bit, it does matter.  If only for consistency.
+      throw new Error("input timezone offsets don't match @@");
     }
-    this.start = startArg;
-    this.end = endArg;
+    if (startArg.isBefore(endArg)) {
+      this.start = startArg;
+      this.end = endArg;
+    } else if (startArg.isAfter(endArg)) {
+      this.start = endArg;
+      this.end = startArg;
+    } else {
+      throw new Error("cannot have a instantaneous range"); // TODO rly?
+    }
     this.tzString = startArg._z.name; // this isn't in official documents
   } else if (startArg.year && startArg.month && startArg.day && startArg.hour
     && endArg.year && endArg.month && endArg.day && endArg.hour) { // using object initialization
@@ -34,6 +51,10 @@ function Range(startArg, endArg, tzString) {
 Range.prototype.print = function () {
   console.log("starts at", this.start.format());
   console.log("ends at", this.end.format());
+};
+
+Range.prototype.valueOf = function() {
+  return this.start.valueOf() + "-" + this.end.valueOf();
 };
 
 Range.prototype.isOverlap = function (that) {
