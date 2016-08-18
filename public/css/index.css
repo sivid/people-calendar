@@ -4246,7 +4246,7 @@ div.css_select .css_select-scrollbar::-webkit-scrollbar-thumb {
 .alert_page .alert_content {
   padding: 20px 25px;
   overflow-y: auto;
-  max-height: 550px;
+  height: calc(100% - 91px);
   word-break: break-word;
 }
 .alert_page .alert_content.nano {
@@ -4278,6 +4278,13 @@ div.css_select .css_select-scrollbar::-webkit-scrollbar-thumb {
 }
 .alert_page ::-webkit-scrollbar-thumb {
   background-color: #999999;
+}
+
+#alert_create_activity {
+  width: 98%;
+  left: 1%;
+  height: 98%;
+  top: 1%;
 }
 
 @media only screen and (min-width: 1025px) {

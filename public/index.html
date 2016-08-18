@@ -22,10 +22,21 @@
 </head>
 
 <body>
-    <article class="alert_page alert_open" id="alert_create_activity">
-        <section class="alert_title"></section>
-        <section class="alert_content"></section>
-        <section class="alert_button"></section>
+    <article class="alert_page" id="alert_create_activity">
+        <section class="alert_title">Create New Activity</section>
+        <i class="NBicon-close" onclick="document.getElementById('alert_create_activity').classList.remove('alert_open');"></i>
+        <section class="alert_content">
+            <p class="subtitle">Activity Name</p>
+            <input type="text" class="form-control" autocomplete="off" placeholder="Please enter activity name" required>
+            <p class="subtitle">Dateline</p>
+            <input type="text" class="form-control" autocomplete="off" placeholder="Please enter activity name" required>
+            <p class="subtitle">Invited member</p>
+            <textarea class="form-control" rows="8" placeholder="Sperate form semicolon" required></textarea>
+        </section>
+        <section class="alert_button">
+            <button type="submit" class="btn btn-primary">Next</button>
+            <button type="button" class="btn btn-default" onclick="document.getElementById('alert_create_activity').classList.remove('alert_open')">Cancel</button>
+        </section>
     </article>
     <article id="alert_bg"></article>
     <header class="topbar vertical-middle">
@@ -67,7 +78,7 @@
                 <li class="css_listrow activitydaterange">2016.08.05 ~ 2016.10.05</li>         
             </ul>
         </section>
-        <button class="NBicon-add_circle" id="createActivity"></button>
+        <button class="NBicon-add_circle" id="createActivity" onclick="document.getElementById('alert_create_activity').classList.add('alert_open');"></button>
     </article>
     <article class="page_content" id="calenderbox"></article>
     <article class="page_content" id="setbox"></article>

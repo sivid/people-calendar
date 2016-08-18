@@ -148,7 +148,7 @@
 	.alert_content
 		padding: 20px 25px
 		overflow-y: auto
-		max-height: 550px
+		height: calc(100% - 91px)
 		word-break: break-word
 		&.nano
 			height: calc(80% - 100px)
@@ -172,6 +172,11 @@
 		border-left: $ShadowGray solid thin
 	::-webkit-scrollbar-thumb
 		background-color: #999999
+#alert_create_activity
+	width: 98%
+	left: 1%
+	height: 98%
+	top: 1%
 // PC / Notebook
 @media only screen and (min-width: 1025px)
 	.topbar
