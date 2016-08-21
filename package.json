@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "loadApiRouter": "node index.js loadApiRouter",
-    "test": "./node_modules/.bin/mocha --reporter spec"
+    "test": "./node_modules/.bin/tape test/*.js"
   },
   "repository": {
     "type": "git",
@@ -23,14 +23,14 @@
     "people"
   ],
   "engines": {
-    "node": "4.4.7"
+    "node": "6.3.0"
   },
   "dependencies": {
     "bluebird": "3.4.1",
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
+    "body-parser": "1.15.2",
+    "express": "4.14.0",
     "moment-timezone": "0.5.5",
-    "njwt": "^0.3.1",
+    "njwt": "0.3.1",
     "redis": "2.6.2",
     "response-time": "^2.3.1"
   },

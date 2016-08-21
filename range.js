@@ -1,5 +1,6 @@
 "use strict";
 var moment = require("moment-timezone");
+
 function Range(startArg, endArg, tzString) {
   if (typeof tzString !== "string") {
     throw new Error("third argument must be a timezone string"); // like "Asia/Taipei"
@@ -38,12 +39,8 @@ function Range(startArg, endArg, tzString) {
       throw new Error("cannot have a instantaneous range"); // TODO rly?
     }
     this.tzString = startArg._z.name; // this isn't in official documents
-  } else if (startArg.year && startArg.month && startArg.day && startArg.hour
-    && endArg.year && endArg.month && endArg.day && endArg.hour) { // using object initialization
-    this.start = moment.tz(startArg, tzString);
-    this.end = moment.tz(endArg, tzString);
-    this.tzString = tzString;
   } else {
+    console.error(startArg, endArg, tzString);
     throw new Error("invalid argument");
   }
 }
@@ -53,7 +50,7 @@ Range.prototype.print = function () {
   console.log("ends at", this.end.format());
 };
 
-Range.prototype.valueOf = function() {
+Range.prototype.valueOf = function () {
   return this.start.valueOf() + "-" + this.end.valueOf();
 };
 
@@ -75,7 +72,7 @@ Range.prototype.union = function (that) {
   if (!this.isOverlap(that)) {
     // they don't overlap, but it's possible that their edges touch
     if (this.end.isSame(that.start)) {
-      return new Range(this.start, that.end, this.tzString); 
+      return new Range(this.start, that.end, this.tzString);
     } else if (this.start.isSame(that.end)) {
       return new Range(that.start, this.end, this.tzString);
     } else {

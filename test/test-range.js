@@ -1,6 +1,6 @@
 let test = require("tape");
 let Range = require("../Range");
-var moment = require("moment-timezone");
+let moment = require("moment-timezone");
 
 // using native Javascript api for reference
 // month is 0 based // wtf
@@ -43,7 +43,7 @@ test("creation test", function(t) {
   }, "try to create instantaneous Range");
   t.equal(new Range(m1, m2, "GMT").valueOf() === r12.valueOf(), true);
   t.equal(new Range(m2, m1, "GMT").valueOf() === r12.valueOf(), true);
-  // TODO cover Range creation using an object..
+
 });
 
 test("valueOf test", function(t) {
