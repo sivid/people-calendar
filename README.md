@@ -20,6 +20,9 @@ Put html/css/js files in /public folder
 ##### local testing
 `heroku local web`
 
+##### unit test
+`npm test`
+
 ##### to deploy to heroku
 `git push heroku master`  pushing to github works too..
 

@@ -54,13 +54,18 @@ Range.prototype.valueOf = function () {
   return this.start.valueOf() + "-" + this.end.valueOf();
 };
 
-Range.prototype.isOverlap = function (that) {
+Range.prototype.isTouching = function (that) {
   if (!(that instanceof Range)) {
     throw new Error("need to compare instances of Range");
   }
   if (that.start.isBefore(this.end) && that.end.isAfter(this.start)) {
     return true;
   } else {
+    if (this.end.isSame(that.start)) {
+      return true;
+    } else if (this.start.isSame(that.end)) {
+      return true;
+    }
     return false;
   }
 };
@@ -69,16 +74,7 @@ Range.prototype.union = function (that) {
   if (!(that instanceof Range)) {
     throw new Error("need to compare instances of Range");
   }
-  if (!this.isOverlap(that)) {
-    // they don't overlap, but it's possible that their edges touch
-    if (this.end.isSame(that.start)) {
-      return new Range(this.start, that.end, this.tzString);
-    } else if (this.start.isSame(that.end)) {
-      return new Range(that.start, this.end, this.tzString);
-    } else {
-      throw new Error(this.format() + " and " + that.format() + " do not union to a valid Range");
-    }
-  } else { // they overlap
+  if (this.isTouching(that)) { // they overlap/touch each other
     if (this.start.isSameOrBefore(that.start) && this.end.isSameOrAfter(that.end)) {
       return this; // this completely envelops that
     } else if (that.start.isSameOrBefore(this.start) && that.end.isSameOrAfter(this.end)) {
@@ -90,6 +86,8 @@ Range.prototype.union = function (that) {
     } else {
       throw new Error("I've missed a case @@", this.format(), that.format());
     }
+  } else {
+    throw new Error("Provided ranges do not overlap");
   }
 };
 module.exports = Range;

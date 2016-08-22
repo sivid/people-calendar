@@ -52,13 +52,15 @@ test("valueOf test", function(t) {
 });
 
 test("overlap test", function(t) {
-  t.plan(6);
-  t.equal(r12.isOverlap(r23), false, "r12 does not overlap r23");
-  t.equal(r23.isOverlap(r12), false, "r23 does not overlap r12");
-  t.equal(r12.isOverlap(r13), true, "r12 overlaps r13");
-  t.equal(r13.isOverlap(r12), true, "r13 overlaps r12");
-  t.equal(r23.isOverlap(r13), true, "r23 overlaps r13");
-  t.equal(r13.isOverlap(r23), true, "r13 overlaps r23");
+  t.plan(8);
+  t.equal(r12.isTouching(r23), true, "r12 touches/overlaps r23");
+  t.equal(r23.isTouching(r12), true, "r23 touches/overlaps r12");
+  t.equal(r12.isTouching(r13), true, "r12 touches/overlaps r13");
+  t.equal(r13.isTouching(r12), true, "r13 touches/overlaps r12");
+  t.equal(r23.isTouching(r13), true, "r23 touches/overlaps r13");
+  t.equal(r13.isTouching(r23), true, "r13 touches/overlaps r23");
+  t.equal(r12.isTouching(r34), false, "r12 does not touch/overlap r34");
+  t.equal(r34.isTouching(r12), false, "r34 does not touch/overlap r12");
 });
 
 // console.log("13 union",r1.union(r2).valueOf());

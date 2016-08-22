@@ -1,7 +1,5 @@
 ###tests
-http://mochajs.org/  
-http://chaijs.com/  
-https://github.com/pouchdb/plugin-seed/blob/master/test/test.js  
+tests now use https://github.com/substack/tape
 
 ###how to store stuff in redis
 Redis' Set supports intersect/union/remove and lots of other actions.  It might be enough to handle our date overlap logic... but where's the fun in that eh?
