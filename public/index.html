@@ -25,18 +25,86 @@
     <article class="alert_page" id="alert_create_activity">
         <section class="alert_title">Create New Activity</section>
         <i class="NBicon-close" onclick="document.getElementById('alert_create_activity').classList.remove('alert_open');"></i>
-        <section class="alert_content">
-            <p class="subtitle">Activity Name</p>
-            <input type="text" class="form-control" autocomplete="off" placeholder="Please enter activity name" required>
-            <p class="subtitle">Dateline</p>
-            <input type="text" class="form-control" autocomplete="off" placeholder="Please enter activity name" required>
-            <p class="subtitle">Invited member</p>
-            <textarea class="form-control" rows="8" placeholder="Sperate form semicolon" required></textarea>
-        </section>
-        <section class="alert_button">
-            <button type="submit" class="btn btn-primary">Next</button>
-            <button type="button" class="btn btn-default" onclick="document.getElementById('alert_create_activity').classList.remove('alert_open')">Cancel</button>
-        </section>
+        <form class="alert_form" onsubmit="document.getElementById('alert_create_activity').classList.remove('alert_open');document.getElementById('alert_create_activity_dayset').classList.add('alert_open')">
+            <section class="alert_content">
+                <p class="subtitle">Activity Name</p>
+                <input type="text" class="form-control" autocomplete="off" placeholder="Please enter activity name" required>
+                <p class="subtitle">Dateline</p>
+                <div class="form-between">
+                    <input type="text" class="form-control date_calender" autocomplete="off" placeholder="Please enter activity start" required>
+                    <input type="text" class="form-control date_calender" autocomplete="off" placeholder="Please enter activity end" required>
+                </div>
+                <p class="subtitle">Invited member</p>
+                <textarea class="form-control" rows="8" placeholder="Sperate form semicolon" required></textarea>
+            </section>
+            <section class="alert_button">
+                <button type="submit" class="btn btn-primary">Next</button>
+                <button type="button" class="btn btn-default" onclick="document.getElementById('alert_create_activity').classList.remove('alert_open')">Cancel</button>
+            </section>
+        </form>
+    </article>
+    <article class="alert_page alert_open" id="alert_create_activity_dayset">
+        <section class="alert_title">Set Activity Day</section>
+        <i class="NBicon-close" onclick="document.getElementById('alert_create_activity_dayset').classList.remove('alert_open');"></i>
+        <form class="alert_form" onsubmit="document.getElementById('alert_create_activity_dayset').classList.remove('alert_open')">
+            <section class="alert_content">
+                <div class="css_tableBox">
+                    <div class="css_tableHeader">
+                        <ul class="css_tableRow">
+                            <li class="css_tableColumn">日</li>
+                            <li class="css_tableColumn">一</li>
+                            <li class="css_tableColumn">二</li>
+                            <li class="css_tableColumn">三</li>
+                            <li class="css_tableColumn">四</li>
+                            <li class="css_tableColumn">五</li>
+                            <li class="css_tableColumn">六</li>
+                        </ul>
+                    </div>
+                    <div class="css_tableContent">
+                        <ul class="css_tableRow">
+                            <li class="css_tableColumn">1</li>
+                            <li class="css_tableColumn">2</li>
+                            <li class="css_tableColumn">3</li>
+                            <li class="css_tableColumn">4</li>
+                            <li class="css_tableColumn">5</li>
+                            <li class="css_tableColumn">6</li>
+                            <li class="css_tableColumn">7</li>
+                        </ul>
+                        <ul class="css_tableRow">
+                            <li class="css_tableColumn">1</li>
+                            <li class="css_tableColumn">2</li>
+                            <li class="css_tableColumn">3</li>
+                            <li class="css_tableColumn">4</li>
+                            <li class="css_tableColumn">5</li>
+                            <li class="css_tableColumn">6</li>
+                            <li class="css_tableColumn">7</li>
+                        </ul>
+                        <ul class="css_tableRow">
+                            <li class="css_tableColumn">1</li>
+                            <li class="css_tableColumn">2</li>
+                            <li class="css_tableColumn">3</li>
+                            <li class="css_tableColumn">4</li>
+                            <li class="css_tableColumn">5</li>
+                            <li class="css_tableColumn">6</li>
+                            <li class="css_tableColumn">7</li>
+                        </ul>
+                        <ul class="css_tableRow">
+                            <li class="css_tableColumn">1</li>
+                            <li class="css_tableColumn">2</li>
+                            <li class="css_tableColumn">3</li>
+                            <li class="css_tableColumn">4</li>
+                            <li class="css_tableColumn">5</li>
+                            <li class="css_tableColumn">6</li>
+                            <li class="css_tableColumn">7</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="alert_button">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-default" onclick="document.getElementById('alert_create_activity').classList.add('alert_open');document.getElementById('alert_create_activity_dayset').classList.remove('alert_open')">Back</button>
+            </section>
+        </form>
     </article>
     <article id="alert_bg"></article>
     <header class="topbar vertical-middle">
@@ -68,14 +136,14 @@
                 <li class="css_listrow vertical-middle activitydateline" data-day="3"></li>
                 <li class="css_listrow activityName">Activity Name</li>
                 <li class="css_listrow activitynum">11 members</li>
-                <li class="css_listrow activitydaterange">2016.08.05 ~ 2016.10.05</li> 
+                <li class="css_listrow activitydaterange">2016.08.05 ~ 2016.10.05</li>
             </ul>
             <ul class="activityList">
                 <li class="css_listrow activityresult">2016.10.10</li>
                 <li class="css_listrow activitydateline" data-day="0"></li>
                 <li class="css_listrow activityName">Activity Name2</li>
                 <li class="css_listrow activitynum">8 members</li>
-                <li class="css_listrow activitydaterange">2016.08.05 ~ 2016.10.05</li>         
+                <li class="css_listrow activitydaterange">2016.08.05 ~ 2016.10.05</li>
             </ul>
         </section>
         <button class="NBicon-add_circle" id="createActivity" onclick="document.getElementById('alert_create_activity').classList.add('alert_open');"></button>
@@ -96,6 +164,17 @@
     <script src="javascripts/moment.min.js"></script>
     <script src="javascripts/moment-timezone-with-data-2010-2020.js"></script>
     <script src="javascripts/public_test.js"></script>
+    <script src="javascripts/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript">
+    (function($) {
+        $(function() {
+            $('.date_calender').datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+    })(jQuery);
+    </script>
 </body>
 
 </html>

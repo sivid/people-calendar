@@ -138,6 +138,9 @@
 		cursor: pointer
 		&:hover
 			color: $ActionColor
+	.alert_form
+		width: 100%
+		height: calc(100% - 52px)
 	.alert_button
 		padding: 5px 10px
 		border-top: #eee 1px solid
@@ -148,7 +151,7 @@
 	.alert_content
 		padding: 20px 25px
 		overflow-y: auto
-		height: calc(100% - 91px)
+		height: calc(100% - 39px)
 		word-break: break-word
 		&.nano
 			height: calc(80% - 100px)
@@ -163,8 +166,11 @@
 			font-family: $TitleFont
 		.form-control, .form-between
 			width: 90%
-		.form-between.icon-between
-			width: 100%
+		.form-between
+			&.icon-between
+				width: 100%
+			.form-control
+				width: 47%
 		.subtitle:not(:first-of-type)
 			margin-top: 2.5%
 	::-webkit-scrollbar
@@ -173,6 +179,11 @@
 	::-webkit-scrollbar-thumb
 		background-color: #999999
 #alert_create_activity
+	width: 700px
+	left: calc(50% - 350px)
+	height: 50%
+	top: 15%
+#alert_create_activity_dayset
 	width: 98%
 	left: 1%
 	height: 98%
