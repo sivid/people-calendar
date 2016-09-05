@@ -625,6 +625,66 @@ div.css_select .css_select-scrollbar::-webkit-scrollbar-thumb {
   background-color: #999999;
 }
 
+.css_tableBox {
+  width: 100%;
+  height: 100%;
+}
+.css_tableBox > * {
+  width: 100%;
+}
+.css_tableBox.calender li {
+  width: calc(98% / 7);
+}
+.css_tableBox .css_tableHeader {
+  height: 45px;
+  border-bottom: 1.5px #BDBDBD solid;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.css_tableBox .css_tableHeader .css_tableRow:after {
+  content: "";
+  width: 0;
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.css_tableBox .css_tableContent {
+  overflow-y: auto;
+  height: calc(100% - 45px);
+}
+.css_tableBox .css_tableContent .css_tableRow {
+  border-bottom: #eee thin solid;
+}
+.css_tableBox .css_tableContent .css_tableRow:hover {
+  background-color: #F6F6F6;
+  cursor: pointer;
+}
+.css_tableBox .css_tableContent .css_tableRow:nth-of-type(odd) {
+  background: #fAfAfA;
+}
+.css_tableBox .css_tableContent .css_tableRow li {
+  text-indent: 0.5rem;
+}
+.css_tableBox .css_tableContent::-webkit-scrollbar {
+  background-color: #fafafa;
+  width: 12px;
+}
+.css_tableBox .css_tableContent::-webkit-scrollbar-thumb {
+  background-color: #656565;
+}
+.css_tableBox .css_tableRow {
+  white-space: nowrap;
+  width: inherit;
+}
+.css_tableBox .css_tableRow li {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 2.5;
+}
+
 .vertical-middle:after {
   content: "";
   width: 0;
@@ -5659,6 +5719,12 @@ fieldset[disabled] .datepicker table tr td span.active.disabled.active, fieldset
   left: 1%;
   height: 98%;
   top: 1%;
+}
+#alert_create_activity_dayset .alert_content {
+  padding: 20px 0;
+}
+#alert_create_activity_dayset .css_tableBox {
+  text-align: center;
 }
 
 @media only screen and (min-width: 1025px) {

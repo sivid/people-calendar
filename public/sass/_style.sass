@@ -131,10 +131,52 @@ div.css_select
 			background-color: #999999
 
 .css_tableBox
+	width: 100%
+	height: 100%
+	> *
+		width: 100%
+	&.calender
+		li
+			width: calc(98% / 7)
+		
 	.css_tableHeader
+		height: 45px
+		border-bottom: 1.5px #BDBDBD solid
+		font-size: 1.15rem
+		font-weight: 600
+		.css_tableRow:after
+			content: ""
+			width: 0
+			display: inline-block
+			height: 100%
+			vertical-align: middle
 	.css_tableContent
+		overflow-y: auto
+		height: calc(100% - 45px)
+		.css_tableRow
+			border-bottom: #eee thin solid
+			&:hover
+				background-color: #F6F6F6
+				cursor: pointer
+			&:nth-of-type(odd)
+				background: #fAfAfA
+			li
+				text-indent: 0.5rem
+		&::-webkit-scrollbar
+			background-color: #fafafa
+			width: 12px
+		&::-webkit-scrollbar-thumb 
+			background-color: #656565
 	.css_tableRow
-	.css_tableColumn
+		white-space: nowrap
+		width: inherit
+		li
+			overflow: hidden
+			white-space: nowrap
+			text-overflow: ellipsis
+			display: inline-block
+			vertical-align: middle
+			line-height: 2.5
 
 .vertical-middle:after
 	content: ""
